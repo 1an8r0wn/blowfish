@@ -1,6 +1,6 @@
 ---
 title: "安装和配置"
-date: 2020-08-16
+weight: 2
 draft: false
 description: "如何安装 Blowfish 主题。"
 slug: "installation"
@@ -9,9 +9,9 @@ series: ["部署教程"]
 series_order: 2
 ---
 
-如果想快速上有，可以按照标准的 Hugo [快速启动](https://gohugo.io/getting-started/quick-start/) 文档。
+如果想快速上手，可以按照标准的 Hugo [快速启动](https://gohugo.io/getting-started/quick-start/) 文档。
 
-更详细的安装如下，[更新主题](#installing-updates)的教程也可以看此文档。
+更详细的安装如下，[更新主题](#更新主题)的教程也可以看此文档。
 
 ## 前言
 
@@ -22,7 +22,7 @@ series_order: 2
 如果你之前没有使用过 Hugo，你首先需要了解[在本地机器安装 Hugo](https://gohugo.io/getting-started/installing)。你可以通过运行命令 `hugo version` 来检查是否安装完成。
 
 {{< alert >}}
-确保你使用 **Hugo 0.87.0** 或更高的版本，Blowfish 主题中使用了最新的 Hugo 特性。
+确保你使用 **Hugo 0.141.0** 或更高的版本，Blowfish 主题中使用了最新的 Hugo 特性。
 {{< /alert >}}
 
 你可以在 [Hugo 文档](https://gohugo.io/getting-started/installing) 中找到不同平台更加详细的安装指南。
@@ -54,7 +54,7 @@ blowfish-tools new mynewsite
 
 <iframe width="100%" height="350" src="https://www.youtube.com/embed/SgXhGb-7QbU?si=ce44baicuQ6zMeXz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### 手动安装
+### 无需 CLI 的安装
 
 #### 创建新站点
 
@@ -66,13 +66,13 @@ blowfish-tools new mynewsite
 
 有多种方法可以将 Blowfish 主题安装在 Hugo 站点中。下面我们由易到难逐一介绍：
 
-- [使用 Git 子模块安装](#install-using-git) (推荐)
-- [使用 Hugo 模块安装](#install-using-hugo)
-- [手动文件复制](#install-manually)
+- [使用 Git 子模块安装](#使用-git-子模块安装) (推荐)
+- [使用 Hugo 模块安装](#使用-hugo-模板安装)
+- [手动文件复制](#手动复制文件)
 
 如果你不确定用哪一个，请直接选择 Git 子模块的方式。
 
-##### 使用 Git 子模块安装
+#### 使用 Git 子模块安装
 
 这个方法可以保证主题简单且快速地安装和更新。除了 **Hugo** 和 **Go**，你还需要确保本地机器安装了 **Git**。
 
@@ -84,9 +84,9 @@ git init
 git submodule add -b main https://github.com/nunocoracao/blowfish.git themes/blowfish
 ```
 
-然后 [设置主题的配置文件](#set-up-theme-configuration-files)。
+然后 [设置主题的配置文件](#手动复制文件)。
 
-##### 使用 Hugo 模板安装
+#### 使用 Hugo 模板安装
 
 这种方法是使用 Hugo 来管理你的主题，Hugo 使用 **Go** 来初始化和管理模块，所以首先需要确保已经安装了`go`。
 
@@ -110,24 +110,25 @@ git submodule add -b main https://github.com/nunocoracao/blowfish.git themes/blo
 
    ```toml
    [[imports]]
+   disable = false
    path = "github.com/nunocoracao/blowfish/v2"
    ```
 
 4. 使用`hugo server` 命令后，主题将会自动下载。
-5. 然后 [设置主题的配置文件](#set-up-theme-configuration-files).
+5. 然后 [设置主题的配置文件](#手动复制文件).
 
-##### 手动复制文件
+#### 手动复制文件
 
 1. 下载最新的主题源码。
 
    {{< button href="https://github.com/nunocoracao/blowfish/releases/latest" target="_blank" >}}从 Github 下载{{< /button >}}
 
 2. 解压缩, 并将文件夹重命名为  `blowfish`，将其移动到你的 Hugo 项目根目录下的 `themes/` 目录中。
-3. 然后 [设置主题的配置文件](#set-up-theme-configuration-files).
+3. 然后 [设置主题的配置文件](#手动复制文件).
 
 #### 设置主题的配置文件
 
-在你的网站根目录中，删除 Hugo 自动生成的 `config.toml` 文件。从主题中复制 `*.toml` 文件，粘贴到 `config/_default/` 目录中。这将确保你的主题设置准确无误，在此基础上你能够轻松地自定义主题。
+在你的网站根目录中，删除 Hugo 自动生成的 `hugo.toml` 文件。从主题中复制 `*.toml` 文件，粘贴到 `config/_default/` 目录中。这将确保你的主题设置准确无误，在此基础上你能够轻松地自定义主题。
 
 {{< alert >}}
 **注意:** 如果项目中已经存在 `module.toml` 文件，请不要覆盖它！
@@ -135,14 +136,14 @@ git submodule add -b main https://github.com/nunocoracao/blowfish.git themes/blo
 
 根据你安装主题的不同方式，你可以在以下地方找到主题的配置文件：
 
-- **Hugo 模块:** 在 Hugo 的缓存目录, 或者从 Github [下载副本](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/nunocoracao/blowfish/tree/main/config/_default) from GitHub
+- **Hugo 模块:** 在 Hugo 的缓存目录, 或者从 Github [下载副本](https://github.com/nunocoracao/blowfish/releases/latest/download/config-default.zip) from GitHub
 - **Git 子模块 或 本地复制文件:** `themes/blowfish/config/_default`
 
 一旦你复制了这些文件，你的 config 目录看起来应该是这样：
 
 ```shell
 config/_default/
-├─ config.toml
+├─ hugo.toml
 ├─ languages.en.toml
 ├─ markup.toml
 ├─ menus.en.toml
@@ -151,7 +152,7 @@ config/_default/
 ```
 
 {{< alert >}}
-**重要:** 如果你没有使用 Hugo 模块安装 Blowfish，那么你必须在 `config.toml` 文件中添加 `theme = "blowfish"`。
+**重要:** 如果你没有使用 Hugo 模块安装 Blowfish，那么你必须在 `hugo.toml` 文件中添加 `theme = "blowfish"`。
 {{< /alert >}}
 
 ### 下一步
@@ -166,11 +167,11 @@ config/_default/
 
 如何更新主题取决于最初安装主题时选择的安装方式，具体如下：
 
-- [使用 Git 子模块安装](#update-using-git)
-- [使用 Hugo 模块安装](#update-using-hugo)
-- [手动文件复制](#update-manually)
+- [使用 Git 子模块安装](#使用-git-更新)
+- [使用 Hugo 模块安装](#使用-hugo-更新)
+- [手动文件复制](#手动更新)
 
-### 利用 git 更新
+### 使用 git 更新
 
 Git 子模块的方式，可以使用 `git` 命令更新。只需执行以下命令，最新版的主题将会下载到你的本地仓库中：
 
@@ -180,7 +181,7 @@ git submodule update --remote --merge
 
 一旦子模块更新完毕，请检查你的确实是否一切正常。
 
-### Update using Hugo
+### 使用 Hugo 更新
 
 Hugo 更新也十分容易。只需要进入网站根目录，并执行以下命令即可：
 
