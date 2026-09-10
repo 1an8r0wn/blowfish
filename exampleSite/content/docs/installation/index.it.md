@@ -1,6 +1,6 @@
 ---
 title: "Installazione"
-date: 2020-08-16
+weight: 2
 draft: false
 description: "Come installare il tema Blowfish."
 slug: "installation"
@@ -11,7 +11,22 @@ series_order: 2
 
 Segui semplicemente la procedura standard [Avvio Rapido](https://gohugo.io/getting-started/quick-start/) di Hugo per iniziare subito.
 
-Sono riportate le istruzioni dettagliate per l'installazione. Sono disponibili anche le istruzioni per [aggiornare il tema](#installazione-aggiornamenti).
+Sono riportate le istruzioni dettagliate per l'installazione. Sono disponibili anche le istruzioni per [aggiornare il tema](#installazione-degli-aggiornamenti).
+
+## Skill per agenti
+
+Blowfish include una [skill per agenti](https://github.com/nunocoracao/blowfish/tree/main/.claude/skills/blowfish) che insegna agli agenti di programmazione IA — come Claude Code — come installare, configurare e creare siti con il tema. Se usi un agente per lavorare sul tuo sito, installa la skill così conoscerà i file di configurazione, i layout, il front matter e gli shortcode di Blowfish.
+
+Installala dal marketplace dei plugin di Blowfish in Claude Code:
+
+```shell
+/plugin marketplace add nunocoracao/blowfish
+/plugin install blowfish@blowfish
+```
+
+In alternativa, copia la cartella della skill nel repository del tuo sito in `.claude/skills/blowfish/` — gli agenti caricano automaticamente le skill presenti nella directory `.claude/skills/` di un progetto.
+
+---
 
 ## Installazione
 
@@ -23,12 +38,12 @@ Se non hai mai utilizzato Hugo prima, dovrai [installarlo nella tua local machin
 Puoi verificare se hai già installato Hugo utilizzando il comando `hugo version`.
 
 {{< alert >}}
-Assicurati di usare la **versione 0.87.0 di Hugo** o successiva, poiché il tema sfrutta alcune delle ultime caratteristiche di Hugo.
+Assicurati di usare la **versione 0.162.0 di Hugo** o successiva, poiché il tema sfrutta alcune delle ultime caratteristiche di Hugo.
 {{< /alert >}}
 
 Puoi trovare le istruzioni dettagliate sull'installazione per la propria piattaforma in [Documenti Hugo](https://gohugo.io/getting-started/installing).
 
-### Strumenti Blowfish (raccomandato)
+### Strumenti Blowfish
 
 Abbiamo appena lanciato un nuovo strumento CLI per aiutarti a iniziare con Blowfish. Questo ti permette di creare un nuovo progetto Hugo, di installare il tema e di impostare i file di configurazione del tema per te. È ancora in fase beta, quindi per favore [segnala qualsiasi problema che riscontri] (https://github.com/nunocoracao/blowfish-tools).
 
@@ -54,7 +69,7 @@ Ecco un rapido video che ti mostra quanto sia veloce iniziare a utilizzare Blowf
 
 <iframe width="100%" height="350" src="https://www.youtube.com/embed/SgXhGb-7QbU?si=ce44baicuQ6zMeXz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### Installazione Manuale
+### Installazione senza CLI
 
 #### Crea un novo sito
 
@@ -66,13 +81,13 @@ La cartella del progetto può essere chiamata come si vuole, ma le istruzioni ch
 
 Esistono diversi modi per installare il tema Blowfish nel proprio sito web Hugo. Dal più facile al più difficile da installare e mantenere, sono:
 
-- [Git submodule](#install-using-git) (recommended)
-- [Hugo module](#install-using-hugo) 
-- [Copia manuale dei file](#install-manually)
+- [Git submodule](#installazione-usando-git) (recommended)
+- [Hugo module](#installazione-usando-hugo)
+- [Copia manuale dei file](#installazione-manuale)
 
 Se non sei sicuro, scegli il metodo Git submodule.
 
-##### Installazione usando Git
+#### Installazione usando Git
 
 Questo è il metodo piu facile e veloce per mantere il tema aggiornato. Oltre **Hugo** e **Go**, dovrai assicurarti di avere **Git** installato nel tuo local machine.
 
@@ -84,9 +99,9 @@ git init
 git submodule add -b main https://github.com/nunocoracao/blowfish.git themes/blowfish
 ```
 
-poi continua a [impostare i file di configurazione del tema](#set-up-theme-configuration-files).
+poi continua a [impostare i file di configurazione del tema](#imposta-i-file-di-configurazione-del-tema).
 
-##### Installazione usando Hugo
+#### Installazione usando Hugo
 
 Per questo metodo utilizzerai Hugo per gestire i tuoi temi. Hugo utilizza **Go** per inizializzare e gestire i moduli, quindi assicurati di aver installato `go` prima di procedere.
 
@@ -110,24 +125,25 @@ Per questo metodo utilizzerai Hugo per gestire i tuoi temi. Hugo utilizza **Go**
 
    ```toml
    [[imports]]
-   path = "github.com/nunocoracao/blowfish/v2"
+   disable = false
+   path = "github.com/nunocoracao/blowfish/v3"
    ```
 
 4. Avvia il tuo server utilizzando `hugo server` e il tema verrà scaricato automaticamente.
-5. Continua con [impostare i file di configurazione del tema](#set-up-theme-configuration-files).
+5. Continua con [impostare i file di configurazione del tema](#imposta-i-file-di-configurazione-del-tema).
 
-##### Installazione manuale
+#### Installazione manuale
 1. Scarica l'ultima versione del codice sorgente del tema.
 
    {{< button href="https://github.com/nunocoracao/blowfish/releases/latest" target="_blank" >}}Scarica da Github{{< /button >}}
 
  "blowfish" e "themes/" 
 2. Estrai l'archivio, rinomina la cartella in `blowfish`  spostala nella directory `themes/` all'interno della cartella principale del tuo progetto Hugo.
-3. Continua con [impostare i file di configurazione del tema](#set-up-theme-configuration-files).
+3. Continua con [impostare i file di configurazione del tema](#imposta-i-file-di-configurazione-del-tema).
 
 #### Imposta i file di configurazione del tema
 
-Nella cartella principale del tuo sito web, elimina il file `config.toml` generato da Hugo. Copia i file di configurazione `*.toml` dal tema nella tua cartella `config/_default/`. Ciò ti garantirà di avere tutte le impostazioni corrette del tema e ti consentirà di personalizzare facilmente il tema in base alle tue esigenze.
+Nella cartella principale del tuo sito web, elimina il file `hugo.toml` generato da Hugo. Copia i file di configurazione `*.toml` dal tema nella tua cartella `config/_default/`. Ciò ti garantirà di avere tutte le impostazioni corrette del tema e ti consentirà di personalizzare facilmente il tema in base alle tue esigenze.
 
 {{< alert >}}
 **Note:** Non dovresti sovrascrivere il file `module.toml` se ne esiste già uno nel tuo progetto!
@@ -135,14 +151,14 @@ Nella cartella principale del tuo sito web, elimina il file `config.toml` genera
 
 A seconda di come hai installato il tema, troverai i file di configurazione del tema in posti diversi:
 
-- **Hugo modules:** Nella directory della cache di Hugo o [scarica una copia](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/nunocoracao/blowfish/ tree/main/config/_default) da GitHub
+- **Hugo modules:** Nella directory della cache di Hugo o [scarica una copia](https://github.com/nunocoracao/blowfish/releases/latest/download/config-default.zip tree/main/config/_default) da GitHub
 - **Git submodule o installazione manuale:** `themes/blowfish/config/_default`
 
 Una volta che hai copiato i file, la tua cartella delle configurazioni dovrebbe essere cosi:
 
 ```shell
 config/_default/
-├─ config.toml
+├─ hugo.toml
 ├─ languages.en.toml
 ├─ markup.toml
 ├─ menus.en.toml
@@ -151,7 +167,7 @@ config/_default/
 ```
 
 {{< alert >}}
-**Importante:** Se non hai utilizzato Hugo Modules per installare Blowfish, devi aggiungere la riga `theme = "blowfish"` all'inizio del tuo file `config.toml`.
+**Importante:** Se non hai utilizzato Hugo Modules per installare Blowfish, devi aggiungere la riga `theme = "blowfish"` all'inizio del tuo file `hugo.toml`.
 {{< /alert >}}
 
 ### Passo successivo
@@ -166,9 +182,9 @@ Di tanto in tanto verranno pubblicate [nuove versioni](https://github.com/nunoco
 
 Il modo in cui procedere dipenderà dal metodo di installazione scelto al momento dell'installazione originale del tema. Le istruzioni per ciascun metodo sono disponibili di seguito.
 
-- [Git submodule](#update-using-git)
-- [Hugo module](#update-using-hugo)
-- [Copia manuale del file](#aggiornamento-manuale)
+- [Git submodule](#aggiornamento-utilizzando-git)
+- [Hugo module](#aggiornamento-utilizzando-hugo)
+- [Copia manuale del file](#aggiornamenti-manuali)
 
 ### Aggiornamento utilizzando Git
 
@@ -207,3 +223,14 @@ Tieni presente che ogni personalizzazione locale apportata ai file del tema andr
 2. Estrai l'archivio, rinomina la cartella in "blowfish" e spostala nella directory "themes/" all'interno della cartella principale del tuo progetto Hugo. Dovrai sovrascrivere la directory esistente per sostituire tutti i file del tema.
 
 3. Riavvia il tuo sito e verifica che tutto funzioni come previsto.
+---
+
+## Aggiornare da v2 a v3
+
+Blowfish v3 è completamente retrocompatibile con i siti v2: tutte le novità sono opt-in, nessuna opzione di configurazione è stata rimossa e nessun template o partial è stato rinominato. Il tuo sito avrà lo stesso aspetto e comportamento dopo l'aggiornamento, finché non attivi le nuove funzionalità.
+
+- **Submodule Git:** aggiorna come al solito — `git submodule update --remote --merge`. Non serve altro.
+- **Modulo Hugo:** modifica `config/_default/module.toml` cambiando il percorso di import da `github.com/nunocoracao/blowfish/v2` a `github.com/nunocoracao/blowfish/v3`, poi esegui `hugo mod get -u`.
+- **Installazione manuale:** scarica l'ultima release e sostituisci la cartella del tema, come descritto sopra.
+
+Dopo l'aggiornamento, consulta la [documentazione di configurazione]({{< ref "configuration" >}}) per le nuove opzioni — l'header flottante, il layout landing, lo sfondo globale, la barra di avanzamento della lettura e altro.
