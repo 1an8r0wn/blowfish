@@ -9,10 +9,11 @@
       </h1>
     </header>
     <section class="max-w-full mt-6 prose dark:prose-invert">
-      {{ .Content | emojify }}
+      {{ .Content }}
     </section>
-    <footer class="pt-8">
+    <footer class="pt-8 print:hidden">
       {{ partial "sharing-links.html" . }}
+      {{ partial "article-comments.html" . }}
     </footer>
   </article>
 {{ end }}
