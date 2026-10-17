@@ -1,6 +1,7 @@
 ---
 title: "缩略图"
-date: 2020-08-10
+featureimage: "images/v3/thumbnails.png"
+weight: 10
 draft: false
 description: "为你的文章配置缩略图。"
 slug: "thumbnails"
