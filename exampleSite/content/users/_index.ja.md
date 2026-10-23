@@ -10,9 +10,9 @@ showAuthor: false
 showReadingTime: false
 showEdit: false
 layoutBackgroundHeaderSpace: false
-cardViewScreenWidth: true
+cardViewScreenWidth: false
 ---
- 
+
 
 
 Blowfish で構築された実際のウェブサイトです。すべてのウェブサイト一覧は [JSON 形式](/users/users.json) で閲覧可能です。
