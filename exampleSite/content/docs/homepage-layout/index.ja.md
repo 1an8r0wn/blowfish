@@ -1,89 +1,122 @@
 ---
-title: "Homepage Layout"
-date: 2020-08-13
+title: "ホームページレイアウト"
+featureimage: "images/v3/homepage-layout.png"
+weight: 5
 draft: false
-description: "Configuring the homepage layout in the Blowfish theme."
+description: "Blowfish テーマのホームページレイアウト設定"
 slug: "homepage-layout"
 tags: ["homepage", "layouts", "docs"]
 series: ["Documentation"]
 series_order: 5
 ---
 
-Blowfish provides a fully flexible homepage layout. There are two main templates to choose from with additional settings to adjust the design. Alternatively, you can also provide your own template and have complete control over the homepage content.
+Blowfish は柔軟なホームページレイアウトを提供しており、各デザインを調整するための設定が用意されています。または、独自のテンプレートを提供して、ホームページのコンテンツを完全に制御することもできます。
 
-The layout of the homepage is controlled by the `homepage.layout` setting in the `params.toml` configuration file. Additionally, all layouts have the option to include a listing of [recent articles](#recent-articles).
+ホームページのレイアウトは、`params.toml` 設定ファイルの `homepage.layout` 設定によって制御されます。さらに、すべてのレイアウトには、[最新記事](#最新記事)のリストを含めるオプションがあります。
 
-## Profile layout
+## プロフィールレイアウト (profile)
 
-The default layout is the profile layout, which is great for personal websites and blogs. It puts the author's details front and centre by providing an image and links to social profiles.
+デフォルトのレイアウトはプロフィールレイアウトで、個人ウェブサイトやブログに最適です。画像とソーシャルプロファイルへのリンクを提供することで、著者の詳細を前面に押し出します。
 
-<img class="thumbnailshadow" src="img/home-profile.png"/>
+{{< figure src="img/home-profile.png" class="thumbnailshadow" >}}
 
-The author information is provided in the languages configuration file. Refer to the [Getting Started]({{< ref "getting-started" >}}) and [Language Configuration]({{< ref "configuration##language-and-i18n" >}}) sections for parameter details.
+著者情報は、言語設定ファイルで提供されます。パラメータの詳細については、[始める]({{< ref "getting-started" >}})と[言語設定]({{< ref "configuration#言語と-i18n" >}})セクションを参照してください。
 
-Additionally, any Markdown content that is provided in the homepage content will be placed below the author profile. This allows extra flexibility for displaying a bio or other custom content using shortcodes.
+さらに、ホームページのコンテンツで提供される Markdown コンテンツはすべて、著者プロファイルの下に配置されます。これにより、ショートコードを使用して経歴やその他のカスタムコンテンツを表示するための柔軟性が向上します。
 
-To enable the Profile layout, set `homepage.layout = "profile"` in the `params.toml` configuration file.
+プロフィールレイアウトを有効にするには、`params.toml` 設定ファイルで `homepage.layout = "profile"` と設定します。
 
-## Page layout
+## ページレイアウト (page)
 
-The page layout is simply a normal content page that displays your Markdown content. It's great for static websites and provides a lot of flexibility.
+ページレイアウトは、Markdown コンテンツを表示する通常のコンテンツページです。静的ウェブサイトに最適で、高い柔軟性を提供します。
 
-<img class="thumbnailshadow" src="img/home-page.png"/>
+{{< figure src="img/home-page.png" class="thumbnailshadow" >}}
 
-To enable the Page layout, set `homepage.layout = "page"` in the `params.toml` configuration file.
+ページレイアウトを有効にするには、`params.toml` 設定ファイルで `homepage.layout = "page"` を設定します。
 
-## Hero layout
+## ヒーローレイアウト (hero)
 
-The hero layout brings together ideas from the profile and card layouts. This one not only displays information on the author of the site but it also loads your markdown beneath it.
+ヒーローレイアウトは、プロフィールレイアウトとカードレイアウトのアイデアを組み合わせたものです。これは、サイトの著者に関する情報を表示するだけでなく、その下に Markdown をロードします。
 
-<img class="thumbnailshadow" src="img/home-hero.png"/>
+{{< figure src="img/home-hero.png" class="thumbnailshadow" >}}
 
-To enable the Hero layout, set `homepage.layout = "hero"` and `homepage.homepageImage` in the `params.toml` configuration file.
+ヒーローレイアウトを有効にするには、`params.toml` 設定ファイルで `homepage.layout = "hero"` と `homepage.homepageImage` を設定します。
 
-## Background layout
+## 背景レイアウト (background)
 
-The background layout is a more smooth version of the hero layout. As in the Hero layout, this one also displays both information on the author of the site and loads your markdown beneath it.
+背景レイアウトは、ヒーローレイアウトをより滑らかにしたバージョンです。ヒーローレイアウトと同様に、サイトの著者に関する情報を表示し、その下に Markdown をロードします。
 
-<img class="thumbnailshadow" src="img/home-background.png"/>
+{{< figure src="img/home-background.png" class="thumbnailshadow" >}}
 
-To enable the Background layout, set `homepage.layout = "background"` and `homepage.homepageImage` in the `params.toml` configuration file.
+背景レイアウトを有効にするには、`params.toml` 設定ファイルで `homepage.layout = "background"` と `homepage.homepageImage` を設定します。
 
-## Card layout
+## カードレイアウト (card)
 
-The card layout is an extension of the page layout. It provides the same level of flexibility by also displaying your markdown content and adds a card image to display visual content.
+カードレイアウトは、ページレイアウトの拡張版です。Markdown コンテンツも表示することで同じレベルの柔軟性を提供し、ビジュアルコンテンツを表示するためのカード画像も追加します。
 
-<img class="thumbnailshadow" src="img/home-card.png"/>
+{{< figure src="img/home-card.png" class="thumbnailshadow" >}}
 
-To enable the Card layout, set `homepage.layout = "card"` and `homepage.homepageImage` in the `params.toml` configuration file. 
+カードレイアウトを有効にするには、`params.toml` 設定ファイルで `homepage.layout = "card"` と `homepage.homepageImage` を設定します。
+
+## ランディングレイアウト (landing)
+
+ランディングレイアウトは、プロダクトサイト、ドキュメントハブ、そしてより強い第一印象を必要とする個人サイトのために設計されています。ページの冒頭には、ゆったりとしたエディトリアルなヒーロー（アイブロウ、ステートメントとなる見出し、リード文、コールトゥアクションボタン）が表示され、オプションでサイト全体の背景に溶け込む全幅のヒーロー画像を背面に配置でき、要素が順に現れるエントランスアニメーションが付いています。このアニメーションは、動きを減らす設定（reduced motion）を有効にしている訪問者に対しては自動的に無効になります。ヒーローより下はすべて標準の Markdown と Blowfish のショートコードなので、ページ全体の移植性と保守性が保たれます。
+
+{{< figure src="img/home-landing.png" class="thumbnailshadow" >}}
+
+ランディングレイアウトを有効にするには、`params.toml` 設定ファイルで `homepage.layout = "landing"` を設定します。
+
+ヒーローは `content/_index.md` のフロントマターによって制御されます。すべてのフィールドはオプションで、省略したものは単に表示されません:
+
+```yaml
+---
+title: "Build a site that feels unmistakably yours."
+heroCaption: "Blowfish" # eyebrow above the title; defaults to the author name
+heroLead: "A short statement that expands on the title."
+heroButtons:
+  - label: "Get started"
+    url: "/docs/installation/"
+  - label: "Explore the docs"
+    url: "/docs/"
+    style: "outline" # "primary" (default) or "outline"
+---
+```
+
+| フロントマター | 説明 |
+| ------------ | ----------- |
+| `heroCaption` | タイトルの上に表示される小さな大文字のアイブロウです。デフォルトは `params.Author.name` です。 |
+| `heroLead` | タイトルの下に表示されるリード文です。Markdown をサポートします。 |
+| `heroButtons` | コールトゥアクションボタンのリストです（`label`、`url`、およびオプションの `style`）。[`cta` ショートコード]({{< ref "shortcodes#cta-button" >}})と同じスタイルを使用します。 |
+
+`_index.md` の Markdown 本文はヒーローの下に表示されるため、統計、フィーチャーグリッド、ステップなどのショートコードでページの残りの部分を構築できます。ランディングレイアウトは、[設定ドキュメント]({{< ref "configuration" >}})で説明されているサイト全体の `backgroundCanvas` オプションと相性が良いです。
 
 
-## Custom layout
+## カスタムレイアウト
 
-If the built-in homepage layouts aren't sufficient for your needs, you have the option to provide your own custom layout. This allows you to have total control over the page content and essentially gives you a blank slate to work with.
+組み込みのホームページレイアウトがニーズに合わない場合は、独自のカスタムレイアウトを提供するオプションがあります。これにより、ページコンテンツを完全に制御でき、基本的に作業するための白紙の状態が得られます。
 
-To enable the Custom layout, set `homepage.layout = "custom"` in the `params.toml` configuration file.
+カスタムレイアウトを有効にするには、`params.toml` 設定ファイルで `homepage.layout = "custom"` を設定します。
 
-With the configuration value set, create a new `custom.html` file and place it in `layouts/partials/home/custom.html`. Now whatever is in the `custom.html` file will be placed in the content area of the site homepage. You may use whatever HTML, Tailwind, or Hugo templating functions you wish to define your layout.
+設定値を設定したら、新しい `custom.html` ファイルを作成し、`layouts/partials/home/custom.html` に配置します。これで、`custom.html` ファイルの内容がサイトのホームページのコンテンツ領域に配置されます。レイアウトを定義するために、HTML、Tailwind、または Hugo テンプレート関数を自由に使用できます。
 
-To include [recent articles](#recent-articles) on the custom layout, use the `recent-articles/main.html` partial.
+カスタムレイアウトに[最新記事](#最新記事)を含めるには、`recent-articles/main.html` パーシャルを使用します。
 
-As an example, the [homepage]({{< ref "/" >}}) on this site uses the custom layout to allow toggling between the profile and page layouts. Visit the [GitHub repo](https://github.com/nunocoracao/blowfish/blob/main/exampleSite/layouts/partials/home/custom.html) to see how it works.
+付属のサンプルサイトは、組み込みのランディングレイアウトと標準のコンテンツショートコードを使用しています。設定方法を確認するには、[GitHub リポジトリ](https://github.com/nunocoracao/blowfish/tree/main/exampleSite)にアクセスしてください。
 
-## Recent articles
+## 最新記事
 
-All homepage layouts have the option of displaying recent articles below the main page content. To enable this, simply set the `homepage.showRecent` setting to `true` in the `params.toml` configuration file.
+すべてのホームページレイアウトには、メインページコンテンツの下に最新記事を表示するオプションがあります。これを有効にするには、`params.toml` 設定ファイルで `homepage.showRecent` 設定を `true` に設定するだけです。
 
-<img class="thumbnailshadow" src="img/home-list.png"/>
+{{< figure src="img/home-list.png" class="thumbnailshadow" >}}
 
-The articles listed in this section are derived from the `mainSections` setting which allows for whatever content types you are using on your website. For instance, if you had content sections for _posts_ and _projects_ you could set this setting to `["posts", "projects"]` and all the articles in these two sections would be used to populate the recent list. The theme expects this setting to be an array so if you only use one section for all your content, you should set this accordingly: `["blog"]`.
+このセクションにリストされている記事は、`mainSections` 設定から派生したもので、ウェブサイトで使用しているコンテンツタイプを指定できます。たとえば、_posts_ と _projects_ のコンテンツセクションがある場合、この設定を `["posts", "projects"]` に設定すると、これら2つのセクションのすべての記事が最新リストに表示されます。テーマはこの設定を配列として想定しているため、すべてのコンテンツに1つのセクションのみを使用する場合は、それに応じて設定する必要があります: `["blog"]`。
 
-## Thumbnails
+## サムネイル
 
-Blowfish was built so it would be easy to add visual support to your articles. If your familiar with Hugo article structure, you just need to place an image file (almost all formats are supported bue we recommend `.png` or `.jpg`) that starts with `feature*` inside your article folder. And that's it, Blowfish will then able to both use the image as a thumbnail within your website as well as for <a target="_blank" href="https://oembed.com/">oEmbed</a> cards across social platforms. 
+Blowfish は、記事にビジュアルサポートを簡単に追加できるように構築されています。Hugo の記事構造に慣れている場合は、記事フォルダ内に `feature*` で始まる画像ファイル (ほとんどすべての形式がサポートされていますが、`.png` または `.jpg` を推奨) を配置するだけです。それだけで、Blowfish はその画像をサイト内のサムネイルとして使用したり、ソーシャルプラットフォーム全体の <a target="_blank" href="https://oembed.com/">oEmbed</a> カードに使用したりできるようになります。
 
-[Here]({{< ref "thumbnails" >}}) is a guide with more info and a [sample]({{< ref "thumbnail_sample" >}}) if you want to see an example.
+詳細情報と例を確認したい場合は、[こちら]({{< ref "thumbnails" >}})にガイドがあります。
 
-## Card Gallery
+## カードギャラリー
 
-Blowfish also supports displaying the standard lists of articles as card galleries. You can config this both for the recent section in the homepage and for lists of articles across your website. For homepage you can use `homepage.cardView` and `homepage.cardViewScreenWidth`; and for lists use `list.cardView` and `list.cardViewScreenWidth`. Check the [Configuration docs]({{< ref "configuration" >}}) for more details, and the homepage for a live demo.
+Blowfish は、記事の標準リストをカードギャラリーとして表示することもサポートしています。これは、ホームページの最新セクションとサイト全体の記事リストの両方で設定できます。ホームページの場合は `homepage.cardView` と `homepage.cardViewScreenWidth` を使用し、リストの場合は `list.cardView` と `list.cardViewScreenWidth` を使用します。詳細については、[設定ドキュメント]({{< ref "configuration" >}})を確認し、ライブデモについてはホームページを確認してください。
