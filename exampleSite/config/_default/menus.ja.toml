@@ -11,7 +11,7 @@
 # このメニューは weight が低い値から高い値に順に表示されます。
 
 [[main]]
-  name = "資料"
+  name = "ドキュメント"
   pageRef = "docs"
   weight = 10
 
@@ -48,7 +48,8 @@
   weight = 90
 
 [[main]]
-  name = "グッズ"
+  identifier = "merch"
+  pre = "shirt"
   url = "https://www.teepublic.com/user/blowfish-store/t-shirts"
   weight = 100
 
@@ -62,6 +63,12 @@
   pre = "x-twitter"
   url = "https://twitter.com/burufugu"
   weight = 200
+
+[[main]]
+  identifier = "bluesky"
+  pre = "bluesky"
+  url = "https://bsky.app/profile/burufugu.bsky.social"
+  weight = 250
 
 #[[main]]
 #  identifier = "mastodon"

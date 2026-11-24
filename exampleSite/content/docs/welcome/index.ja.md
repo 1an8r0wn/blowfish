@@ -1,79 +1,57 @@
 ---
-title: "Welcome to Blowfish"
-date: 2022-01-19
+title: "Blowfish へようこそ"
+featureimage: "images/v3/welcome.png"
+weight: 1
 draft: false
-description: "Discover what's new in Blowfish version 2.0."
+description: "柔軟なレイアウト、豊かなコンテンツ機能、エージェント対応のワークフローで、高速で表現力ある Hugo サイトを作りましょう。"
+lastmod: 2026-08-30
 tags: ["new", "docs"]
 series: ["Documentation"]
 series_order: 1
 ---
 
 {{< lead >}}
-Blowfish is packed with tons of features.
+Blowfish 3 は、ブログ、ドキュメント、ポートフォリオ、そして決まったテンプレートに収まらないサイトのためのモダンな Hugo テーマです。
 {{< /lead >}}
 
-The original aim of Blowfish was to develop a theme that was simple and lightweight. The theme is a fork of <a target="_blank" href="https://github.com/nunocoracao/congo">Congo</a> and expands its initial vision.
+{{< alert >}}
+`npx blowfish-tools new <site>` で新しいサイトを始め、[インストールガイド]({{< ref "docs/installation" >}})に進んでください。既存の Blowfish サイトは互換性を損なう設定変更なしに v3 へ移行できます。
+{{< /alert >}}
 
-## Tailwind CSS 3.0
+## 思い描いたサイトを作る
 
-Tailwind CSS is at the heart of Blowfish and this release contains the very latest [Tailwind CSS version 3](https://tailwindcss.com/blog/tailwindcss-v3). It brings with it performance optimisations and support for some great new CSS features.
+Blowfish は結果を固定せず、しっかりした出発点を提供します。プロフィール、ランディング、ヒーロー、カード、背景などのホームページレイアウトを選べます。配色、タイポグラフィ、ナビゲーション、ダークモード、記事表示はサイト設定で制御し、個別ページはフロントマターで変更できます。
 
-{{< youtube "TmWIrBPE6Bc" >}}
+コンテンツはポータブルな Hugo コンテンツのままです。Markdown、ページバンドル、タクソノミー、メニュー、設定ファイルはすべてリポジトリに置かれます。専用エディタもプラットフォームへのロックインもありません。
 
-## Multilingual support
+## 少ない独自コードで豊かなコンテンツを公開する
 
-A highly requested feature, Blowfish is now multilingual! If you publish your content in multiple languages, the site will be built with all the translations available.
+Markdown で書き、必要に応じて[40 以上のショートコード]({{< ref "docs/shortcodes" >}})を使いましょう。ボタン、通知、アイコン、タブ、ギャラリー、グラフ、図、GitHub カード、動画、コード例を、単発のテンプレートを保守せずに追加できます。
 
-<div class="text-2xl text-center" style="font-size: 2.8rem">:gb: :de: :fr: :es: :cn: :brazil: :tr: :bangladesh:</div>
+Blowfish はコンテンツ周辺も支えます。レスポンシブなアイキャッチとサムネイル、検索、読書機能、目次、ソーシャル・SEO メタデータ、構造化データ、アクセシビリティ設定、任意の分析、コメント、Firebase による閲覧数といいねに対応します。
 
-Thanks to submissions from the community, Blowfish has already been translated into [twenty-six languages](https://github.com/nunocoracao/blowfish/tree/main/i18n) with more to be added over time. By the way, [pull requests](https://github.com/nunocoracao/blowfish/pulls) for new languages are always welcome!
+## すべての読者のために
 
-## RTL language support
+翻訳コンテンツ、言語ごとのメニュー、組み込みの UI 翻訳を備えた多言語サイトを作れます。Blowfish は同じプロジェクトで RTL と LTR の言語をサポートし、表示切替、レスポンシブなナビゲーション、キーボードで使える検索を提供します。
 
-One of the benefits of the new Tailwind and Multilingual features is the ability to add RTL language support. When enabled, the entire site will reflow content from right-to-left. Every element in the theme has been restyled to ensure it looks great in this mode which aids authors who wish to generate content in RTL languages.
+Blowfish は現行の Hugo 機能と Tailwind CSS 4 を使いながら、設定とコンテンツのモデルを分かりやすく、自分で管理できる形に保ちます。
 
-RTL is controlled on a per-language basis so you can mix and match both RTL and LTR content in your projects and the theme will respond accordingly.
+## コーディングエージェントに必要な文脈を渡す
 
-## Automatic image resizing
+Blowfish には、Claude Code などの AI コーディングエージェント向け[エージェントスキル](https://github.com/nunocoracao/blowfish/tree/main/.claude/skills/blowfish)が含まれています。設定の場所、レイアウトとフロントマターの仕組み、利用可能なショートコード、推測せずに Blowfish サイトを作る方法をエージェントに教えます。
 
-A big change in Blowfish 2.0 is the addition of automatic image resizing. Using the power of Hugo Pipes, images in Markdown content are now automatically scaled to different output sizes. These are then presented using HTML `srcset` attributes enabling optimised file sizes to be served to your site visitors.
+Claude Code でインストールします。
 
-![](image-resizing.png)
-
-```html
-<!-- Markdown: ![My image](image.jpg) -->
-<img
-  srcset="
-    /image_320x0_resize_q75_box.jpg 320w,
-    /image_635x0_resize_q75_box.jpg 635w,
-    /image_1024x0_resize_q75_box.jpg 1024w,
-    /image_1270x0_resize_q75_box.jpg 2x"
-  src="/image_635x0_resize_q75_box.jpg"
-  alt="My image"
-/>
+```shell
+/plugin marketplace add nunocoracao/blowfish
+/plugin install blowfish@blowfish
 ```
 
-Best of all there's nothing you need to change! Simply insert standard Markdown image syntax and let the theme do the rest. If you want a little more control, the `figure` shortcode has been completely rewritten to provide the same resizing benefits.
+または、プロジェクトの `.claude/skills/blowfish/` にコピーしてください。セットアップ、設定、コンテンツ構成、ページデザイン、テーマを理解した実装をエージェントに手伝わせながら、サイトはリポジトリで管理できます。
 
+## 次の一歩を選ぶ
 
-## Site search
-
-Powered by [Fuse.js](https://fusejs.io), site search allows visitors to quickly and easily find your content. All searches are performed client-side meaning there's nothing to configure on the server and queries are performed super fast. Simply enable the feature in your site configuration and you're all set. Oh, and it also supports full keyboard navigation!
-
-## Tables of contents
-
-A highly requested feature, Blowfish now supports tables of contents on article pages. You can see it in action on this page. The contents are fully responsive and will adjust to take advantage of the space available at different screen resolutions.
-
-Available on a global or per article basis, the table of contents can be fully customised using standard Hugo configuration values, allowing you to adjust the behaviour to suit your project.
-
-## Accessibility improvements
-
-From adding ARIA descriptions to more items or simply adjusting the contrast of certain text elements, this release is the most accessible yet.
-
-Version 2 also introduces "skip to content" and "scroll to top" links that enable quick navigation. There's also keyboard shortcuts for enabling items like search without reaching for the mouse.
-
-The new image resizing features also provide full control over `alt` and `title` elements enabling an accessible experience for all visitors.
-
-## A whole lot more
-
-There's countless other features to explore. From being able to display taxonomies on articles and list pages, to using the new `headline` author parameter to customise your homepage. There's also improved JSON-LD structured data which further optimises SEO performance. 
+- Blowfish が初めてなら、[インストール]({{< ref "docs/installation" >}})から始めましょう。
+- サイトを形にするなら、[はじめに]({{< ref "docs/getting-started" >}})と[設定]({{< ref "docs/configuration" >}})を読んでください。
+- 可能性を見るなら、[ショートコード]({{< ref "docs/shortcodes" >}})、[サンプル]({{< ref "samples" >}})、[ショーケース]({{< ref "examples" >}})を探索してください。
+- 既存サイトを移行するなら、[Blowfish 3 アップグレードガイド]({{< ref "guides/202608-upgrade-to-blowfish-v3" >}})に従ってください。
